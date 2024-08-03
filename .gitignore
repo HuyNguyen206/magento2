@@ -1,0 +1,12 @@
+src/vendor
+src/var
+/src/generated/
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/.gitignore
+/.idea/csv-editor.xml
+/.idea/magento2plugin.xml
+/.idea/magento3.iml
+/.idea/modules.xml
+/.idea/php.xml
+/.idea/phpunit.xml
+/.idea/vcs.xml
