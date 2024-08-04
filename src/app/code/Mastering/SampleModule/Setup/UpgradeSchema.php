@@ -23,11 +23,17 @@ class UpgradeSchema implements UpgradeSchemaInterface
     public function upgrade(SchemaSetupInterface $setup, ModuleContextInterface $context)
     {
         $setup->startSetup();
-        if (version_compare($context->getVersion(), '1.0.1'))
+        if (version_compare($context->getVersion(), '1.0.1', '<'))
         $connection = $setup->getConnection()->addColumn(
             $setup->getTable('mastering_sample_item'),
             'description', ['type' => Table::TYPE_TEXT, 'nullable' => true, 'comment' => 'Item description']
         );
+
+        if (version_compare($context->getVersion(), '1.0.2', '<'))
+            $connection = $setup->getConnection()->addColumn(
+                $setup->getTable('sales_order_grid'),
+                'base_tax_amount', ['type' => Table::TYPE_DECIMAL, 'comment' => 'Base tax amount']
+            );
 
         $setup->endSetup();
     }
