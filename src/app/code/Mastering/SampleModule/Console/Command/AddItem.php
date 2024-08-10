@@ -16,7 +16,7 @@ class AddItem extends Command
     const INPUT_KEY_NAME = 'name';
     const INPUT_KEY_DESCRIPTION = 'description';
 
-    public function __construct(private ItemFactory $itemFactory, private \Psr\Log\LoggerInterface $logger, private ManagerInterface $manager)
+    public function __construct(private ItemFactory $itemFactory, private ManagerInterface $manager)
     {
         parent::__construct();
     }
@@ -35,7 +35,7 @@ class AddItem extends Command
         $item->setDescription($input->getArgument(self::INPUT_KEY_DESCRIPTION));
         $item->setIsObjectNew(true);
         $item->save();
-        $this->manager->dispatch('mastering_command', ['object' => $item]);
+//        $this->manager->dispatch('mastering_command', ['object' => $item]);
 
         return Cli::RETURN_SUCCESS;
     }

@@ -7,6 +7,7 @@ use Mastering\SampleModule\Api\Data\ItemInterface;
 
 class Item extends AbstractModel implements ItemInterface
 {
+    protected $_eventPrefix = 'mastering_sample_item';
     protected function _construct()
     {
         $this->_init(ResourceModel\Item::class);
